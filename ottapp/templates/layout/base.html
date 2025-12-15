@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: #f4f6f8;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: left;
+            padding: 0px 0px 0px 18px;
+            margin-bottom: 30px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s;
+            margin: 4px 0;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background: #4e73df;
+        }
+
+        /* Top navbar */
+        .top-navbar {
+            height: 60px;
+            background: #4e73df;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .top-navbar span {
+            margin-right: 15px;
+        }
+
+        .top-navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid white;
+            border-radius: 4px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .top-navbar a:hover {
+            background: white;
+            color: #4e73df;
+        }
+
+        /* Main content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 10px;
+            color: #4e73df;
+        }
+
+        .dashboard-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            .sidebar h2 {
+                display: none;
+            }
+            .sidebar a {
+                flex: 1;
+                text-align: center;
+            }
+            .top-navbar {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Messages</a>
+        <a href="#">Settings</a>
+        <a href="/logout/">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <span>Welcome, {{ request.user.username }}</span>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+            Welcome to your Dashboard, {{ request.user.username }}!
+        </div>
+
+        <!-- Dashboard Grid -->
+        <!-- <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h3>Profile</h3>
+                <p>Update your personal information and account details.</p>
+            </div>
+            <div class="dashboard-card">
+                <h3>Messages</h3>
+                <p>Check notifications and recent messages.</p>
+            </div>
+            <div class="dashboard-card">
+                <h3>Settings</h3>
+                <p>Manage your account settings and preferences.</p>
+            </div>
+            <div class="dashboard-card">
+                <h3>Reports</h3>
+                <p>View analytics and activity reports.</p>
+            </div>
+        </div> -->
+
+    </div>
+
+</body>
+</html>
